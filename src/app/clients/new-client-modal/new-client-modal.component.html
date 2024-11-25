@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>New Client</h2>
+<mat-dialog-content>
+  <form [formGroup]="clientForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Shared Key</mat-label>
+      <input matInput formControlName="sharedKey" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Business ID</mat-label>
+      <input matInput formControlName="businessId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" type="tel" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date Added</mat-label>
+      <input matInput formControlName="dateAdded" type="date" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!clientForm.valid" (click)="createClient()">Create</button>
+</mat-dialog-actions>

@@ -1,0 +1,63 @@
+<div>
+    <div class="header">
+        <button mat-raised-button  class="btn-new" (click)="openNewClientModal()">
+          <mat-icon>add</mat-icon> New
+        </button>
+        <button mat-raised-button class="btn-export">
+          <mat-icon>upload</mat-icon> Export
+        </button>
+      </div>
+
+      <div class="search-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter shared key</mat-label>
+          <input matInput [(ngModel)]="sharedKey" placeholder="Enter shared key">
+        </mat-form-field>
+        <button mat-raised-button class="btn-search" (click)="onSearch()">
+          <mat-icon>search</mat-icon> Search
+        </button>
+      </div>
+  
+    <h3 class="clients-title">Clients</h3>
+  
+    <mat-table [dataSource]="clients" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="sharedKey">
+        <mat-header-cell *matHeaderCellDef> Shared Key </mat-header-cell>
+        <mat-cell *matCellDef="let client"> {{client.sharedKey}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="businessId">
+        <mat-header-cell *matHeaderCellDef> Business ID </mat-header-cell>
+        <mat-cell *matCellDef="let client"> {{client.businessId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let client"> {{client.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let client"> {{client.phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dateAdded">
+        <mat-header-cell *matHeaderCellDef> Date Added </mat-header-cell>
+        <mat-cell *matCellDef="let client"> {{client.dateAdded}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let client; let i = index">
+          <button mat-icon-button (click)="onEdit(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
